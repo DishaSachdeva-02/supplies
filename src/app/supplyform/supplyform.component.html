@@ -1,0 +1,52 @@
+
+<div class="card text-center" style="margin: 100px;">
+    <div class="card-header card-title" style="font-size: 30px;">
+      Add Item Details
+    </div>
+    <div class="card-body">
+        <form [formGroup]="supplyform"> 
+            <div class="row mb-3 form-group">
+              <label for="name" class="col-sm-2 col-form-label">Name:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" formControlName="name" [class.is-invalid]="name?.touched && name?.invalid" #itemname>
+                <div *ngIf="name?.touched && name?.invalid">
+                    <span class="text-danger">Name is required</span>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3 form-group">
+              <label for="quantity" class="col-sm-2 col-form-label">Quantity:</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" id="quantity" formControlName="quantity" [class.is-invalid]="quantity?.touched && quantity?.invalid" #itemquantity>
+                <div *ngIf="quantity?.touched && quantity?.invalid">
+                    <span class="text-danger">Quantity is required</span>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3 form-group">
+                <label for="reorderLevel" class="col-sm-2 col-form-label">Reorder Level:</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" id="reorderLevel" formControlName="reorderLevel" [class.is-invalid]="reorderLevel?.touched && reorderLevel?.invalid" #itemreorderlevel>
+                  <div *ngIf="reorderLevel?.touched && reorderLevel?.invalid">
+                    <span class="text-danger">Reorder Level is required</span>
+                </div>
+                </div>
+              </div>
+            <button type="submit" class="btn btn-primary" [disabled]="supplyform.invalid" (click)="add(itemname.value,itemquantity.value,itemreorderlevel.value)" (click)="open(content)">ADD</button>
+            <button type="button" class="btn btn-primary" style="margin-left:10px" (click)="goback()">Back</button>
+          </form>
+          <ng-template #content let-modal>
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Item added successfully..</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <h4>New item is added successfully</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+            </div>
+        </ng-template>
+    </div>
+   
+  </div>

@@ -1,0 +1,16 @@
+<div *ngIf="SupplyList" style="margin-left: 100px;" class="row row-cols-1 row-cols-md-3 g-4">
+    <div *ngFor="let l of SupplyList">
+        <div class="card border-success mb-3" style="max-width: 18rem;">
+            <div class="card-header bg-transparent border-success">Item No {{l.id}}</div>
+            <div class="card-body">
+                <h5 class="card-title">Name : {{l.name}}</h5>
+                <p class="card-text">Quantity : {{l.quantity}}</p>
+                <p class="card-text">Reorder Level :{{l.reorderLevel}}</p>
+            </div>
+            <div class="card-footer bg-transparent border-success">
+                <button class="btn btn-danger rounded-pill px-3" type="button" style="margin-right: 5px;" (click)="delete(l.id)">Delete</button>
+                <button class="btn btn-info rounded-pill px-3" type="button" routerLink="/update/{{l.id}}">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
